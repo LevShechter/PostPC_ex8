@@ -6,47 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/do_calculation_button"
         android:layout_width="110dp"
         android:layout_height="78dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="56dp"
         android:icon="@drawable/calc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_put_number"
-        app:layout_constraintVertical_bias="0.513" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <EditText
         android:id="@+id/edit_text_put_number"
-        android:layout_width="345dp"
-        android:layout_height="181dp"
+        android:layout_width="293dp"
+        android:layout_height="90dp"
         android:elevation="4dp"
         android:gravity="center"
-        android:hint="@string/please_insert_number_that_you_want_to_calculate_roots_for"
+        android:hint="insert_number"
+        android:inputType="number"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#00FFFF"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.337"
-        android:inputType="number" />
-
+        app:layout_constraintTop_toBottomOf="@+id/recycle_view_roots"
+        app:layout_constraintVertical_bias="0.221" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view_roots"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/do_calculation_button"
+        android:layout_width="369dp"
+        android:layout_height="364dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

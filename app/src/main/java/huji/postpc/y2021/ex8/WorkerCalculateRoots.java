@@ -28,9 +28,9 @@ public class WorkerCalculateRoots extends Worker {
         long given_num_to_find_root_for = getInputData().getLong("given_num_to_find_root_for", 0);
         int calc_id = getInputData().getInt("calc_id", -1);
         long cur_num_to_calc_root_for = getInputData().getLong("cur_num_to_calc_root_for", 2);
-        long num = cur_num_to_calc_root_for;
-        while (num < given_num_to_find_root_for / 2)
-        {
+//        while (num < given_num_to_find_root_for / 2)
+        for (long num = cur_num_to_calc_root_for; num < given_num_to_find_root_for / 2; num++) {
+
             if(reached_max_calc_time(init_time_mil_sec, calc_id, given_num_to_find_root_for, cur_num_to_calc_root_for))
             {
                 int other_progress = (int) ( (100.0 * num) /  (0.5 + given_num_to_find_root_for));
@@ -52,7 +52,6 @@ public class WorkerCalculateRoots extends Worker {
                 builder.putInt("progress_percent", current_progress);
                 return Result.success(builder.build());
             }
-            num ++;
         }
         builder.putInt("calc_id", calc_id);
         builder.putLong("given_num_to_find_root_for", given_num_to_find_root_for);

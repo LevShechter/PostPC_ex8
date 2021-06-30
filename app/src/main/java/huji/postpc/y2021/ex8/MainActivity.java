@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                         adapterActivity.notifyDataSetChanged();
                         int position = calculatorHolder.calculators_arr.indexOf(calculator);
                         RecyclerView.ViewHolder viewHolderForLayoutPosition = recycle_view_roots.findViewHolderForLayoutPosition(position);
-                        AdapterActivity.CalculatorViewHolder calculatorViewHolder = (AdapterActivity.CalculatorViewHolder) viewHolderForLayoutPosition;
+                        AdapterActivity.ViewHolder calculatorViewHolder = (AdapterActivity.ViewHolder) viewHolderForLayoutPosition;
                         if (!(calculatorViewHolder == null))
                         {
                             calculatorViewHolder.set_calculator_view(calculator);
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             calculator.calculator_status = calculator_status.finished_calculating_found_prime;
             adapterActivity.notifyDataSetChanged();
             RecyclerView.ViewHolder viewHolderForLayoutPosition1 = recycle_view_roots.findViewHolderForLayoutPosition(calculatorHolder.calculators_arr.indexOf(calculator));
-            AdapterActivity.CalculatorViewHolder calculatorViewHolder = (AdapterActivity.CalculatorViewHolder) viewHolderForLayoutPosition1;
+            AdapterActivity.ViewHolder calculatorViewHolder = (AdapterActivity.ViewHolder) viewHolderForLayoutPosition1;
             if(!(calculatorViewHolder==null))
             {
                 calculatorViewHolder.set_calculator_view(calculator);
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 calculator.progress_percent = progress_percent;
                 RecyclerView.ViewHolder viewHolderForLayoutPosition = recycle_view_roots.findViewHolderForLayoutPosition(indx_calc);
-                AdapterActivity.CalculatorViewHolder calculatorViewHolder = (AdapterActivity.CalculatorViewHolder) viewHolderForLayoutPosition;
+                AdapterActivity.ViewHolder calculatorViewHolder = (AdapterActivity.ViewHolder) viewHolderForLayoutPosition;
                 if(!(calculatorViewHolder == null))
                 {
                     if(progress_percent >= 99)

@@ -3,6 +3,7 @@ package huji.postpc.y2021.ex8;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ import androidx.work.WorkManager;
 
 import java.util.UUID;
 
-public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.CalculatorViewHolder> {
+public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.ViewHolder> {
     CalculatorApplication calculatorApplication;
     public CalculatorHolder calculatorHolder;
     public WorkManager workManager;
@@ -27,16 +28,17 @@ public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.Calcul
 
     @NonNull
     @Override
-    public AdapterActivity.CalculatorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterActivity.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater from = LayoutInflater.from(parent.getContext());
         View inflate = from.inflate(R.layout.activity_calc_view, parent, false);
-        View calc_view = inflate;
-        return new CalculatorViewHolder(calc_view);
+        return new ViewHolder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CalculatorViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CalculatorClass calculator = this.calculatorHolder.calculators_arr.get(holder.getLayoutPosition());
+        String string_from_calc = holder.create_string_from_calc(calculator);
+        holder.view_chosen_number.setText(string_from_calc);
         holder.delete_number_button.setOnClickListener(v ->
         {
             if (calculator.calculator_status == calculator_status.in_progress) {
@@ -62,19 +64,23 @@ public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.Calcul
         return calculatorHolder.calculators_arr.size();
     }
 
-    public static class CalculatorViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView view_chosen_number;
-        ImageView delete_number_button;
+        Button delete_number_button;
         public ProgressBar number_progress_bar;
         ConstraintLayout perform_calc_layout;
 
-        public CalculatorViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.view_chosen_number = itemView.findViewById(R.id.edit_text_put_number);
             this.perform_calc_layout = itemView.findViewById(R.id.perform_calc_layout);
+            this.view_chosen_number = itemView.findViewById(R.id.view_chosen_number_calc_activity);
             this.delete_number_button = itemView.findViewById(R.id.delete_number_button);
             this.number_progress_bar = itemView.findViewById(R.id.number_progress_bar);
 
+        }
+        public void set_calculator_view(CalculatorClass calculator) {
+            view_chosen_number.setText(create_string_from_calc(calculator));
+            number_progress_bar.setVisibility(View.GONE);
         }
 
         public String create_string_from_calc(CalculatorClass calculator) {
@@ -95,10 +101,7 @@ public class AdapterActivity extends RecyclerView.Adapter<AdapterActivity.Calcul
             return calc_result_string;
         }
 
-        public void set_calculator_view(CalculatorClass calculator) {
-            view_chosen_number.setText(create_string_from_calc(calculator));
-            number_progress_bar.setVisibility(View.GONE);
-        }
+
 
     }
 }
