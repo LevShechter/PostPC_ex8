@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ex8</string>
+    <string name="please_insert_number_that_you_want_to_calculate_roots_for">please insert number that you want to calculate roots for</string>
+    <string name="please_calculate_the_roots">please calculate the roots</string>
+</resources>
